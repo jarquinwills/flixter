@@ -41,11 +41,25 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      <% if current_user.present? %>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+      <% else %> 
+        <%= link_to 'Log in', user_session_path, class: 'btn btn-primary' %>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-danger' %>
+        <% end %>
+      
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
   </nav>
+
+    <% if notice.present? %>
+      <p class="alert alert-info"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
   </body>

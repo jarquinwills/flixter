@@ -55,3 +55,26 @@ body {
   background: image_url('background.png');
   font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
 }
+
+.form-content {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.forms {
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 25px;
+}
+
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+}
+
+.remember {
+  margin-left: 2%;
+}
