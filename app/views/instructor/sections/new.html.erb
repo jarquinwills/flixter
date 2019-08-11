@@ -1,0 +1,13 @@
+<br />
+<div class="booyah-box col-10 offset-1">
+  <h1>Add a new section</h1>
+  <%= simple_form_for @section, url: instructor_course_sections_path(@course) do |f| %>
+    <div class="form-group">
+    <%= f.input :title %>
+    <br />
+    <%= f.submit 'Add a section', class: 'btn btn-outline-primary' %>  
+    <br />
+    <br />
+    </div>
+  <% end %>
+</div>
