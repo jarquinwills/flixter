@@ -84,3 +84,5 @@ gem 'fog-aws'
 gem 'mini_magick'
 
 gem 'carrierwave-aws', '~> 1.0.2'
+
+gem 'stripe'
