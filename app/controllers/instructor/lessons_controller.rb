@@ -1,10 +1,20 @@
 class Instructor::LessonsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_user
+  before_action :require_authorized_for_current_user, only: [:create, :new]
+  before_action :requrie_authorized_for_current_lesson, only: [:update]
 
   def new
     @lesson = Lesson.new
+  end
+
+  def update
+    current_lesson.update_attributes(lesson_params)
+    render plain: 'Updated!'
+  end
+
+  def current_lesson
+    @lesson ||= Lesson.find(params[:id])
   end
 
   def create
@@ -18,6 +28,12 @@ class Instructor::LessonsController < ApplicationController
     if current_section.course.user != current_user
       return render plain: 'Unauthorized', status: :unauthorized
     end
+  end 
+
+  def requrie_authorized_for_current_lesson
+    if current_lesson.section.course.user != current_user
+      render plain: 'Unauthorized', status: :unauthorized
+    end
   end
 
   helper_method :current_section
@@ -26,7 +42,7 @@ class Instructor::LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :subtitle, :video)
+    params.require(:lesson).permit(:title, :subtitle, :video, :row_order_position)
   end
 
 end

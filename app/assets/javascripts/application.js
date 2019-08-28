@@ -15,6 +15,7 @@
 //= require jquery
 //= require popper
 //= require tether
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
