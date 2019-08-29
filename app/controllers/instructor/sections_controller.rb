@@ -15,7 +15,7 @@ skip_before_action :verify_authenticity_token, :only => [:update]
 
   def update
     current_section.update_attributes(section_params)
-    reder plain: 'Updated'
+    render plain: 'Updated'
   end
 
   private
@@ -42,7 +42,7 @@ skip_before_action :verify_authenticity_token, :only => [:update]
   end
 
   def current_section
-    @section ||= Section.find(params[:section_id])
+    @current_section ||= Section.find(params[:id])
   end
 
   def section_params
