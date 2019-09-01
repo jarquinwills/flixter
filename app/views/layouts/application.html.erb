@@ -13,7 +13,7 @@
   <body>
   <div class="flex-content-container">
     <nav class="navbar navbar-toggleable-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Flixter</a>
+    <a class="navbar-brand" href=<%= root_path.to_s %>>Flixter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,6 +26,7 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <% if current_user.present? %>
+          <%= link_to 'My Dashboard', dashboard_path, class: 'nav-link' %>
           <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
         <% else %> 
           <%= link_to 'Log in', user_session_path, class: 'btn btn-primary' %>
