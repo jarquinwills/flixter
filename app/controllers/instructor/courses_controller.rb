@@ -4,6 +4,7 @@ class Instructor::CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    @lesson = Lesson.new
   end
 
   def create
@@ -17,6 +18,7 @@ class Instructor::CoursesController < ApplicationController
 
   def show
     @section = Section.new
+    @lesson = Lesson.new
   end
 
   private

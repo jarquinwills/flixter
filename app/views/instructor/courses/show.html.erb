@@ -2,6 +2,11 @@
 
 <script>
   $(function(){
+    $('.new-lesson-button').click(function(event){
+      var lessonUrl = $(event.target).data('lesson-url');  
+      $('#newLessonForm').attr('action', lessonUrl);
+    });
+
     $('.lessons').sortable({
       update: function(event, ui){
         $.ajax({
@@ -51,7 +56,10 @@
         <div class="header">
           <span class="fa fa-ellipsis-v"></span>
           <%= section.title %>
-          <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'float-right btn btn-primary btn-sm' %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section)%>">
+            New Lesson...
+          </button>
           <br />
           <br />
          </div>
@@ -112,4 +120,33 @@
       </div>
     </div>
   </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newLessonLabel">Add a new lesson</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
+              <%= f.input :title %>
+              <%= f.input :subtitle %>
+              <%= f.input :video %>
+              <br />
+              
+              <br />
+              <br />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= f.submit 'Add Lesson', class: 'btn btn-outline-primary' %>  
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 </div>
