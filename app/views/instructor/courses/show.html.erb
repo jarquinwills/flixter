@@ -3,6 +3,7 @@
 <script>
   $(function(){
     $('.new-lesson-button').click(function(event){
+      console.log("event", event);
       var lessonUrl = $(event.target).data('lesson-url');  
       $('#newLessonForm').attr('action', lessonUrl);
     });
@@ -57,7 +58,12 @@
           <span class="fa fa-ellipsis-v"></span>
           <%= section.title %>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section)%>">
+          <button 
+            type="button" 
+            class="btn btn-primary float-right new-lesson-button" 
+              data-toggle="modal" 
+              data-target="#newLessonModal" 
+              data-lesson-url="<%= instructor_section_lessons_path(section)%>">
             New Lesson...
           </button>
           <br />
@@ -131,8 +137,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
+          <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
+            <div class="modal-body">
               <%= f.input :title %>
               <%= f.input :subtitle %>
               <%= f.input :video %>
