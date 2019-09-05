@@ -91,4 +91,6 @@ gem 'ranked-model'
 
 gem 'jquery-ui-rails'
 
+gem 'web-console', '>= 3.3.0'
+
 gem 'font-awesome-rails'
